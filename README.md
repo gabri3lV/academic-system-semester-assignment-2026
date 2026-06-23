@@ -392,112 +392,112 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [US-2361](#us-2361) | Register assessments in classes | ✅ |
-| [US-2363](#us-2363) | Register classes through keyboard input | ✅ |
-| [US-2364](#us-2364) | Manage academic system through command line menu | ✅ |
-| [US-2375](#us-2375) | Generate class assessment summary report | ✅ |
-| [US-2376](#us-2376) | Generate assessment weight report | ✅ |
+| [US-2361](#us-2361) | Register assessments in classes | ❌ |
+| [US-2363](#us-2363) | Register classes through keyboard input | ❌ |
+| [US-2364](#us-2364) | Manage academic system through command line menu | ❌ |
+| [US-2375](#us-2375) | Generate class assessment summary report | ❌ |
+| [US-2376](#us-2376) | Generate assessment weight report | ❌ |
 
 ### Persistence Features
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [TUS-2362](#tus-2362) | Persist class assessments to TXT file | ✅ |
-| [US-2372](#us-2372) | Configure persistence type as administrator | ✅ |
-| [US-2373](#us-2373) | Save academic data to XML file | ✅ |
-| [US-2374](#us-2374) | Save academic data to JSON file | ✅ |
-| [US-2377](#us-2377) | Generate persistence configuration report | ✅ |
+| [TUS-2362](#tus-2362) | Persist class assessments to TXT file | ❌ |
+| [US-2372](#us-2372) | Configure persistence type as administrator | ❌ |
+| [US-2373](#us-2373) | Save academic data to XML file | ❌ |
+| [US-2374](#us-2374) | Save academic data to JSON file | ❌ |
+| [US-2377](#us-2377) | Generate persistence configuration report | ❌ |
 
 ### Security Features
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [US-2366](#us-2366) | Authenticate users and authorize actions based on roles | ✅ |
-| [US-2369](#us-2369) | Handle authentication and authorization errors with custom exceptions | ✅ |
-| [US-2378](#us-2378) | Role-based dynamic menu rendering | ✅ |
-| [US-2379](#us-2379) | Logout | ✅ |
-| [US-2380](#us-2380) | Display role-specific sequential menus | ✅ |
+| [US-2366](#us-2366) | Authenticate users and authorize actions based on roles | ❌ |
+| [US-2369](#us-2369) | Handle authentication and authorization errors with custom exceptions | ❌ |
+| [US-2378](#us-2378) | Role-based dynamic menu rendering | ❌ |
+| [US-2379](#us-2379) | Logout | ❌ |
+| [US-2380](#us-2380) | Display role-specific sequential menus | ❌ |
 
 ### Validation and Exception Handling
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [US-2367](#us-2367) | Handle academic domain errors with custom exceptions | ✅ |
-| [US-2368](#us-2368) | Handle keyboard input errors with custom exceptions | ✅ |
-| [TUS-2371](#tus-2371) | Validate academic domain objects using Jakarta Bean Validation | ✅ |
+| [US-2367](#us-2367) | Handle academic domain errors with custom exceptions | ❌ |
+| [US-2368](#us-2368) | Handle keyboard input errors with custom exceptions | ❌ |
+| [TUS-2371](#tus-2371) | Validate academic domain objects using Jakarta Bean Validation | ❌ |
 
 ### Architecture and Refactoring
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [US-0000](#us-0000) | Start academic system | ✅ |
-| [TUS-](#tus-) | Refactor domain model using Lombok | ✅ |
-| [TUS-2370](#tus-2370) | Refactor menu operations into AcademicSystemController | ✅ |
-| [TUS-2382](#tus-2382) | Define equality for identifiable domain objects | ✅ |
-| [TUS-2396](#tus-2396) | Introduce ClassService | ✅ |
-| [TUS-2397](#tus-2397) | Introduce AssessmentService | ✅ |
-| [TUS-2398](#tus-2398) | Introduce PersistenceService | ✅ |
-| [TUS-2399](#tus-2399) | Introduce ReportService | ✅ |
-| [TUS-2400](#tus-2400) | Simplify AcademicSystemController | ✅ |
-| [TUS-2414](#tus-2414) | Introduce AuthenticationController for JavaFX login | ✅ |
+| [US-0000](#us-0000) | Start academic system | ❌ |
+| [TUS-](#tus-) | Refactor domain model using Lombok | ❌ |
+| [TUS-2370](#tus-2370) | Refactor menu operations into AcademicSystemController | ❌ |
+| [TUS-2382](#tus-2382) | Define equality for identifiable domain objects | ❌ |
+| [TUS-2396](#tus-2396) | Introduce ClassService | ❌ |
+| [TUS-2397](#tus-2397) | Introduce AssessmentService | ❌ |
+| [TUS-2398](#tus-2398) | Introduce PersistenceService | ❌ |
+| [TUS-2399](#tus-2399) | Introduce ReportService | ❌ |
+| [TUS-2400](#tus-2400) | Simplify AcademicSystemController | ❌ |
+| [TUS-2414](#tus-2414) | Introduce AuthenticationController for JavaFX login | ❌ |
 
 ### Docker and Deployment
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [TUS-2381](#tus-2381) | Deliver academic system with Docker | ✅ |
+| [TUS-2381](#tus-2381) | Deliver academic system with Docker | ❌ |
 
 ### Testing Infrastructure and Automated Tests
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [TUS-2383](#tus-2383) | Configure automated testing infrastructure | ✅ |
-| [TUS-2384](#tus-2384) | Test identifiable domain object equality | ✅ |
-| [TUS-2385](#tus-2385) | Test academic domain validation | ✅ |
-| [US-2386](#us-2386) | Test authentication behavior | ✅ |
-| [US-2387](#us-2387) | Test authorization behavior | ✅ |
-| [US-2388](#us-2388) | Test report generation | ✅ |
-| [US-2389](#us-2389) | Test persistence repositories | ✅ |
-| [TUS-2395](#tus-2395) | Verify logging infrastructure behavior | ✅ |
-| [TUS-2401](#tus-2401) | Test ClassService behavior | ✅ |
-| [TUS-2402](#tus-2402) | Test AssessmentService behavior | ✅ |
-| [TUS-2403](#tus-2403) | Test PersistenceService behavior | ✅ |
-| [TUS-2404](#tus-2404) | Test ReportService behavior | ✅ |
-| [TUS-2405](#tus-2405) | Test AcademicSystemController delegation behavior | ✅ |
+| [TUS-2383](#tus-2383) | Configure automated testing infrastructure | ❌ |
+| [TUS-2384](#tus-2384) | Test identifiable domain object equality | ❌ |
+| [TUS-2385](#tus-2385) | Test academic domain validation | ❌ |
+| [US-2386](#us-2386) | Test authentication behavior | ❌ |
+| [US-2387](#us-2387) | Test authorization behavior | ❌ |
+| [US-2388](#us-2388) | Test report generation | ❌ |
+| [US-2389](#us-2389) | Test persistence repositories | ❌ |
+| [TUS-2395](#tus-2395) | Verify logging infrastructure behavior | ❌ |
+| [TUS-2401](#tus-2401) | Test ClassService behavior | ❌ |
+| [TUS-2402](#tus-2402) | Test AssessmentService behavior | ❌ |
+| [TUS-2403](#tus-2403) | Test PersistenceService behavior | ❌ |
+| [TUS-2404](#tus-2404) | Test ReportService behavior | ❌ |
+| [TUS-2405](#tus-2405) | Test AcademicSystemController delegation behavior | ❌ |
 
 ### Logging and Auditing
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [TUS-2390](#tus-2390) | Configure application logging infrastructure | ✅ |
-| [TUS-2391](#tus-2391) | Log authentication and logout events | ✅ |
-| [TUS-2392](#tus-2392) | Log authorization failures | ✅ |
-| [TUS-2393](#tus-2393) | Log persistence operations | ✅ |
-| [TUS-2394](#tus-2394) | Log report generation | ✅ |
+| [TUS-2390](#tus-2390) | Configure application logging infrastructure | ❌ |
+| [TUS-2391](#tus-2391) | Log authentication and logout events | ❌ |
+| [TUS-2392](#tus-2392) | Log authorization failures | ❌ |
+| [TUS-2393](#tus-2393) | Log persistence operations | ❌ |
+| [TUS-2394](#tus-2394) | Log report generation | ❌ |
 
 ### Graphical User Interface (JavaFX)
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [TUS-2406](#tus-2406) | Configure JavaFX application infrastructure | ✅ |
-| [TUS-2407](#tus-2407) | Create JavaFX login screen | ✅ |
-| [TUS-2408](#tus-2408) | Create JavaFX role-based main screen | ✅ |
-| [TUS-2409](#tus-2409) | Create JavaFX class registration screen | ✅ |
-| [TUS-2410](#tus-2410) | Create JavaFX assessment registration screen | ✅ |
-| [TUS-2411](#tus-2411) | Create JavaFX report screen | ✅ |
-| [TUS-2412](#tus-2412) | Create JavaFX persistence configuration screen | ✅ |
-| [TUS-2413](#tus-2413) | Create JavaFX class and assessment visualization screen | ✅ |
+| [TUS-2406](#tus-2406) | Configure JavaFX application infrastructure | ❌ |
+| [TUS-2407](#tus-2407) | Create JavaFX login screen | ❌ |
+| [TUS-2408](#tus-2408) | Create JavaFX role-based main screen | ❌ |
+| [TUS-2409](#tus-2409) | Create JavaFX class registration screen | ❌ |
+| [TUS-2410](#tus-2410) | Create JavaFX assessment registration screen | ❌ |
+| [TUS-2411](#tus-2411) | Create JavaFX report screen | ❌ |
+| [TUS-2412](#tus-2412) | Create JavaFX persistence configuration screen | ❌ |
+| [TUS-2413](#tus-2413) | Create JavaFX class and assessment visualization screen | ❌ |
 
 ### CI/CD and Automation
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [TUS-2415](#tus-2415) | Configure CI pipeline with GitHub Actions | ✅ |
-| [TUS-2416](#tus-2416) | Generate test coverage reports | ✅ |
-| [TUS-2417](#tus-2417) | Publish Docker image automatically | ✅ |
-| [TUS-2418](#tus-2418) | Configure pull request validation workflow | ✅ |
-| [TUS-2419](#tus-2419) | Configure release workflow | ✅ |
-| [TUS-2420](#tus-2420) | Configure branch protection for pull requests | ✅ |
+| [TUS-2415](#tus-2415) | Configure CI pipeline with GitHub Actions | ❌ |
+| [TUS-2416](#tus-2416) | Generate test coverage reports | ❌ |
+| [TUS-2417](#tus-2417) | Publish Docker image automatically | ❌ |
+| [TUS-2418](#tus-2418) | Configure pull request validation workflow | ❌ |
+| [TUS-2419](#tus-2419) | Configure release workflow | ❌ |
+| [TUS-2420](#tus-2420) | Configure branch protection for pull requests | ❌ |
 
 [↑ Back to top](#top)
 
