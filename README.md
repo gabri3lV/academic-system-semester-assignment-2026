@@ -393,7 +393,7 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 | ID | User Story | Status |
 |----|------------|--------|
 | [US-2361](#us-2361) | Register assessments in classes | ✅ |
-| [US-2363](#us-2363) | Register classes through keyboard input | ❌ |
+| [US-2363](#us-2363) | Register classes through keyboard input | ✅ |
 | [US-2364](#us-2364) | Manage academic system through command line menu | ❌ |
 | [US-2375](#us-2375) | Generate class assessment summary report | ❌ |
 | [US-2376](#us-2376) | Generate assessment weight report | ❌ |
@@ -402,7 +402,7 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [TUS-2362](#tus-2362) | Persist class assessments to TXT file | ❌ |
+| [TUS-2362](#tus-2362) | Persist class assessments to TXT file | ✅ |
 | [US-2372](#us-2372) | Configure persistence type as administrator | ❌ |
 | [US-2373](#us-2373) | Save academic data to XML file | ❌ |
 | [US-2374](#us-2374) | Save academic data to JSON file | ❌ |
