@@ -395,7 +395,7 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 | [US-2361](#us-2361) | Register assessments in classes | ✅ |
 | [US-2363](#us-2363) | Register classes through keyboard input | ✅ |
 | [US-2364](#us-2364) | Manage academic system through command line menu | ✅ |
-| [US-2375](#us-2375) | Generate class assessment summary report | ❌ |
+| [US-2375](#us-2375) | Generate class assessment summary report | ✅ |
 | [US-2376](#us-2376) | Generate assessment weight report | ❌ |
 
 ### Persistence Features

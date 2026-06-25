@@ -1,8 +1,13 @@
 package org.example.academic.system.model;
 
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@ToString
 public class AcademicClass {
 
     private String code;
@@ -17,17 +22,5 @@ public class AcademicClass {
 
     public void addAssessment(Assessment assessment) {
         assessments.add(assessment);
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public List<Assessment> getAssessments() {
-        return assessments;
     }
 }
