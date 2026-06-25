@@ -24,10 +24,9 @@ public class Main {
                         0.4
                 );
 
-        System.out.println(registered);
+        System.out.println("Assessment registered: " + registered);
+        System.out.println("Total assessments: " + poo.getAssessments().size());
 
-        System.out.println(
-                poo.getAssessments().size()
-        );
+        system.save();
     }
 }
