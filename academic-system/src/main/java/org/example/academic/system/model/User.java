@@ -1,19 +1,17 @@
 package org.example.academic.system.model;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
 import java.util.Objects;
 
 @Getter
+@RequiredArgsConstructor
 @ToString
 public class User {
 
     private final String username;
-
-    public User(String username) {
-        this.username = username;
-    }
 
     @Override
     public boolean equals(Object object) {

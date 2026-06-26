@@ -431,7 +431,7 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 | ID | User Story | Status |
 |----|------------|--------|
 | [US-0000](#us-0000) | Start academic system | ❌ |
-| [TUS-](#tus-) | Refactor domain model using Lombok | ❌ |
+| [TUS-](#tus-) | Refactor domain model using Lombok | ✅ |
 | [TUS-2370](#tus-2370) | Refactor menu operations into AcademicSystemController | ✅ |
 | [TUS-2382](#tus-2382) | Define equality for identifiable domain objects | ✅ |
 | [TUS-2396](#tus-2396) | Introduce ClassService | ✅ |
