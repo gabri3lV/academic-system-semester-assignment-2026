@@ -3,6 +3,7 @@ package org.example.academic.system;
 import org.example.academic.system.model.*;
 import org.example.academic.system.repository.AcademicSystemRepository;
 import org.example.academic.system.repository.TxtAcademicSystemRepository;
+import org.example.academic.system.service.ClassService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,18 +12,20 @@ public class AcademicSystem {
 
     private List<AcademicClass> classes;
     private AcademicSystemRepository repository;
+    private ClassService classService;
 
     public AcademicSystem() {
         classes = new ArrayList<>();
+        classService = new ClassService(classes);
         repository = new TxtAcademicSystemRepository(); // padrão: TXT
     }
 
     public void addClass(AcademicClass academicClass) {
-        classes.add(academicClass);
+        classService.registerClass(academicClass);
     }
 
     public List<AcademicClass> getClasses() {
-        return classes;
+        return classService.getClasses();
     }
 
     public void save() {
@@ -30,12 +33,7 @@ public class AcademicSystem {
     }
 
     public AcademicClass findClassByCode(String code) {
-        for (AcademicClass academicClass : classes) {
-            if (academicClass.getCode().equals(code)) {
-                return academicClass;
-            }
-        }
-        return null;
+        return classService.findClassByCode(code);
     }
 
     public boolean registerAssessment(String classCode, String type,
