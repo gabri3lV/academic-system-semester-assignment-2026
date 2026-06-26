@@ -80,15 +80,7 @@ public class Main {
                     break;
 
                 case 4: // Listar turmas
-                    if (system.getClasses().isEmpty()) {
-                        System.out.println("No classes registered.");
-                    } else {
-                        System.out.println("\n--- Registered Classes ---");
-                        for (AcademicClass c : system.getClasses()) {
-                            System.out.println(c.getCode() + " | " + c.getTitle()
-                                    + " | Assessments: " + c.getAssessments().size());
-                        }
-                    }
+                    System.out.println(system.generateClassSummaryReport());
                     break;
 
                 case 0: // AC8: sair

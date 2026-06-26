@@ -5,6 +5,7 @@ import org.example.academic.system.repository.AcademicSystemRepository;
 import org.example.academic.system.repository.TxtAcademicSystemRepository;
 import org.example.academic.system.service.AssessmentService;
 import org.example.academic.system.service.ClassService;
+import org.example.academic.system.service.ReportService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +16,13 @@ public class AcademicSystem {
     private AcademicSystemRepository repository;
     private ClassService classService;
     private AssessmentService assessmentService;
+    private ReportService reportService;
 
     public AcademicSystem() {
         classes = new ArrayList<>();
         classService = new ClassService(classes);
         assessmentService = new AssessmentService(classService);
+        reportService = new ReportService(classService);
         repository = new TxtAcademicSystemRepository(); // padrão: TXT
     }
 
@@ -42,5 +45,9 @@ public class AcademicSystem {
     public boolean registerAssessment(String classCode, String type,
                                       double value, double weight) {
         return assessmentService.registerAssessment(classCode, type, value, weight);
+    }
+
+    public String generateClassSummaryReport() {
+        return reportService.generateClassSummaryReport();
     }
 }
