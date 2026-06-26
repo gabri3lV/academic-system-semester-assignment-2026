@@ -5,6 +5,7 @@ import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @ToString
@@ -22,5 +23,21 @@ public class AcademicClass {
 
     public void addAssessment(Assessment assessment) {
         assessments.add(assessment);
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof AcademicClass that)) {
+            return false;
+        }
+        return Objects.equals(code, that.code);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code);
     }
 }
