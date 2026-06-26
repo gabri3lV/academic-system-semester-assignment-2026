@@ -435,7 +435,7 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 | [TUS-2370](#tus-2370) | Refactor menu operations into AcademicSystemController | ❌ |
 | [TUS-2382](#tus-2382) | Define equality for identifiable domain objects | ✅ |
 | [TUS-2396](#tus-2396) | Introduce ClassService | ✅ |
-| [TUS-2397](#tus-2397) | Introduce AssessmentService | ❌ |
+| [TUS-2397](#tus-2397) | Introduce AssessmentService | ✅ |
 | [TUS-2398](#tus-2398) | Introduce PersistenceService | ❌ |
 | [TUS-2399](#tus-2399) | Introduce ReportService | ❌ |
 | [TUS-2400](#tus-2400) | Simplify AcademicSystemController | ❌ |
