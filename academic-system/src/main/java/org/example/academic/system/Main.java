@@ -38,7 +38,8 @@ public class Main {
                     System.out.print("Enter class title: ");
                     String title = scanner.nextLine().trim();
 
-                    System.out.println(controller.registerClass(code, title));
+                    controller.registerClass(code, title);
+                    System.out.println("Class registered successfully!");
                     break;
 
                 case 2: // Cadastrar avaliação
@@ -66,7 +67,12 @@ public class Main {
                         break;
                     }
 
-                    System.out.println(controller.registerAssessment(classCode, type, value, weight));
+                    boolean registered = controller.registerAssessment(classCode, type, value, weight);
+                    if (registered) {
+                        System.out.println("Assessment registered successfully!");
+                    } else {
+                        System.out.println("Failed. Check class code and assessment type.");
+                    }
                     break;
 
                 case 3: // Salvar dados

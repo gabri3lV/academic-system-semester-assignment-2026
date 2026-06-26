@@ -10,17 +10,12 @@ public class AcademicSystemController {
         this.system = system;
     }
 
-    public String registerClass(String code, String title) {
+    public void registerClass(String code, String title) {
         system.registerClass(code, title);
-        return "Class registered successfully!";
     }
 
-    public String registerAssessment(String classCode, String type, double value, double weight) {
-        boolean registered = system.registerAssessment(classCode, type, value, weight);
-        if (registered) {
-            return "Assessment registered successfully!";
-        }
-        return "Failed. Check class code and assessment type.";
+    public boolean registerAssessment(String classCode, String type, double value, double weight) {
+        return system.registerAssessment(classCode, type, value, weight);
     }
 
     public void saveData() {
