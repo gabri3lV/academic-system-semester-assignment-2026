@@ -1,5 +1,6 @@
 package org.example.academic.system.service;
 
+import org.example.academic.system.exception.InvalidAssessmentException;
 import org.example.academic.system.model.AcademicClass;
 import org.example.academic.system.model.Assessment;
 import org.example.academic.system.model.Assignment;
@@ -18,21 +19,17 @@ public class AssessmentService {
     public boolean registerAssessment(String classCode, String type, double value, double weight) {
         AcademicClass academicClass = classService.findClassByCode(classCode);
         if (academicClass == null) {
-            return false;
+            throw new InvalidAssessmentException("Class not found: " + classCode);
         }
 
         Assessment assessment = createAssessment(type, value, weight);
-        if (assessment == null) {
-            return false;
-        }
-
         academicClass.addAssessment(assessment);
         return true;
     }
 
     private Assessment createAssessment(String type, double value, double weight) {
         if (type == null) {
-            return null;
+            throw new InvalidAssessmentException("Assessment type must not be null.");
         }
 
         switch (type.toLowerCase()) {
@@ -45,7 +42,7 @@ public class AssessmentService {
             case "practicalassignment":
                 return new PracticalAssignment(value, weight);
             default:
-                return null;
+                throw new InvalidAssessmentException("Invalid assessment type: " + type);
         }
     }
 }

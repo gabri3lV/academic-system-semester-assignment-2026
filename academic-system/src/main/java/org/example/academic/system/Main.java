@@ -1,6 +1,7 @@
 package org.example.academic.system;
 
 import org.example.academic.system.controller.AcademicSystemController;
+import org.example.academic.system.exception.AcademicSystemException;
 
 import java.util.Scanner;
 
@@ -38,8 +39,12 @@ public class Main {
                     System.out.print("Enter class title: ");
                     String title = scanner.nextLine().trim();
 
-                    controller.registerClass(code, title);
-                    System.out.println("Class registered successfully!");
+                    try {
+                        controller.registerClass(code, title);
+                        System.out.println("Class registered successfully!");
+                    } catch (AcademicSystemException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case 2: // Cadastrar avaliação
@@ -67,11 +72,15 @@ public class Main {
                         break;
                     }
 
-                    boolean registered = controller.registerAssessment(classCode, type, value, weight);
-                    if (registered) {
-                        System.out.println("Assessment registered successfully!");
-                    } else {
-                        System.out.println("Failed. Check class code and assessment type.");
+                    try {
+                        boolean registered = controller.registerAssessment(classCode, type, value, weight);
+                        if (registered) {
+                            System.out.println("Assessment registered successfully!");
+                        } else {
+                            System.out.println("Failed. Check class code and assessment type.");
+                        }
+                    } catch (AcademicSystemException e) {
+                        System.out.println(e.getMessage());
                     }
                     break;
 
