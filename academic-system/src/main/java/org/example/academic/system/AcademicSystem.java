@@ -30,6 +30,10 @@ public class AcademicSystem {
         classService.registerClass(academicClass);
     }
 
+    public void registerClass(String code, String title) {
+        addClass(new AcademicClass(code, title));
+    }
+
     public List<AcademicClass> getClasses() {
         return classService.getClasses();
     }

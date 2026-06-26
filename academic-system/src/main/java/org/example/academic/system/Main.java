@@ -1,6 +1,6 @@
 package org.example.academic.system;
 
-import org.example.academic.system.model.AcademicClass;
+import org.example.academic.system.controller.AcademicSystemController;
 
 import java.util.Scanner;
 
@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         AcademicSystem system = new AcademicSystem();
+        AcademicSystemController controller = new AcademicSystemController(system);
         Scanner scanner = new Scanner(System.in);
 
         boolean running = true;
@@ -37,9 +38,7 @@ public class Main {
                     System.out.print("Enter class title: ");
                     String title = scanner.nextLine().trim();
 
-                    AcademicClass newClass = new AcademicClass(code, title);
-                    system.addClass(newClass);
-                    System.out.println("Class registered successfully!");
+                    System.out.println(controller.registerClass(code, title));
                     break;
 
                 case 2: // Cadastrar avaliação
@@ -67,20 +66,15 @@ public class Main {
                         break;
                     }
 
-                    boolean registered = system.registerAssessment(classCode, type, value, weight);
-                    if (registered) {
-                        System.out.println("Assessment registered successfully!");
-                    } else {
-                        System.out.println("Failed. Check class code and assessment type.");
-                    }
+                    System.out.println(controller.registerAssessment(classCode, type, value, weight));
                     break;
 
                 case 3: // Salvar dados
-                    system.save();
+                    controller.saveData();
                     break;
 
                 case 4: // Listar turmas
-                    System.out.println(system.generateClassSummaryReport());
+                    System.out.println(controller.generateClassSummaryReport());
                     break;
 
                 case 0: // AC8: sair

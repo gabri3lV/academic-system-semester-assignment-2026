@@ -432,7 +432,7 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 |----|------------|--------|
 | [US-0000](#us-0000) | Start academic system | ❌ |
 | [TUS-](#tus-) | Refactor domain model using Lombok | ❌ |
-| [TUS-2370](#tus-2370) | Refactor menu operations into AcademicSystemController | ❌ |
+| [TUS-2370](#tus-2370) | Refactor menu operations into AcademicSystemController | ✅ |
 | [TUS-2382](#tus-2382) | Define equality for identifiable domain objects | ✅ |
 | [TUS-2396](#tus-2396) | Introduce ClassService | ✅ |
 | [TUS-2397](#tus-2397) | Introduce AssessmentService | ✅ |
