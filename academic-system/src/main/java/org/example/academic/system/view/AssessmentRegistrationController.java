@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import org.example.academic.system.controller.AcademicSystemController;
+import org.example.academic.system.controller.ControllerFactory;
 
 public class AssessmentRegistrationController {
 
@@ -13,15 +14,20 @@ public class AssessmentRegistrationController {
     @FXML private TextField txtValue;
     @FXML private TextField txtWeight;
 
-    private final AcademicSystemController systemController = new AcademicSystemController();
+    private final AcademicSystemController systemController =
+            ControllerFactory.getAcademicSystemController();
 
     @FXML
     public void initialize() {
-        // Mock de turmas (No futuro, você buscará isso do backend/repositório)
-        cbCourseCode.getItems().addAll("CC001", "CC002", "CC003");
+        // Busca turmas reais do sistema
+        cbCourseCode.getItems().clear();
+        ControllerFactory.getAcademicSystemController()
+                .getClasses()
+                .forEach(c -> cbCourseCode.getItems().add(c.getCode()));
 
-        // Tipos de avaliação definidos no domínio
-        cbAssessmentType.getItems().addAll("Exam", "PracticalAssignment", "Seminar", "Assignment");
+        cbAssessmentType.getItems().addAll(
+                "exam", "assignment", "seminar", "practicalassignment"
+        );
     }
 
     @FXML

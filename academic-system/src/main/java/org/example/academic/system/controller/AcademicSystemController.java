@@ -3,6 +3,7 @@ package org.example.academic.system.controller;
 import org.example.academic.system.AcademicSystem;
 import org.example.academic.system.exception.AcademicSystemException;
 import org.example.academic.system.exception.AuthorizationException;
+import org.example.academic.system.model.AcademicClass;
 import org.example.academic.system.repository.PersistenceConfiguration;
 import org.example.academic.system.repository.PersistenceType;
 import org.example.academic.system.security.Session;
@@ -10,6 +11,7 @@ import org.example.academic.system.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class AcademicSystemController {
@@ -272,5 +274,9 @@ public class AcademicSystemController {
 
     private AcademicSystem academicSystem() {
         return AcademicSystem.getInstance();
+    }
+
+    public List<AcademicClass> getClasses() {
+        return AcademicSystem.getInstance().getClasses();
     }
 }
