@@ -431,7 +431,7 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 | ID | User Story | Status |
 |----|------------|--------|
 | [US-0000](#us-0000) | Start academic system | ❌ |
-| [TUS-](#tus-) | Refactor domain model using Lombok | ❌ |
+| [TUS-](#tus-) | Refactor domain model using Lombok | ✅ |
 | [TUS-2370](#tus-2370) | Refactor menu operations into AcademicSystemController | ✅ |
 | [TUS-2382](#tus-2382) | Define equality for identifiable domain objects | ✅ |
 | [TUS-2396](#tus-2396) | Introduce ClassService | ✅ |
@@ -479,14 +479,14 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [TUS-2406](#tus-2406) | Configure JavaFX application infrastructure | ❌ |
-| [TUS-2407](#tus-2407) | Create JavaFX login screen | ❌ |
-| [TUS-2408](#tus-2408) | Create JavaFX role-based main screen | ❌ |
-| [TUS-2409](#tus-2409) | Create JavaFX class registration screen | ❌ |
-| [TUS-2410](#tus-2410) | Create JavaFX assessment registration screen | ❌ |
-| [TUS-2411](#tus-2411) | Create JavaFX report screen | ❌ |
-| [TUS-2412](#tus-2412) | Create JavaFX persistence configuration screen | ❌ |
-| [TUS-2413](#tus-2413) | Create JavaFX class and assessment visualization screen | ❌ |
+| [TUS-2406](#tus-2406) | Configure JavaFX application infrastructure | ✅ |
+| [TUS-2407](#tus-2407) | Create JavaFX login screen | ✅ |
+| [TUS-2408](#tus-2408) | Create JavaFX role-based main screen | ✅ |
+| [TUS-2409](#tus-2409) | Create JavaFX class registration screen | ✅ |
+| [TUS-2410](#tus-2410) | Create JavaFX assessment registration screen | ✅ |
+| [TUS-2411](#tus-2411) | Create JavaFX report screen | ✅ |
+| [TUS-2412](#tus-2412) | Create JavaFX persistence configuration screen | ✅ |
+| [TUS-2413](#tus-2413) | Create JavaFX class and assessment visualization screen | ✅ |
 
 ### CI/CD and Automation
 
