@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import org.example.academic.system.controller.AcademicSystemController;
+import org.example.academic.system.controller.ControllerFactory;
 
 public class ClassRegistrationController {
 
@@ -11,7 +12,8 @@ public class ClassRegistrationController {
     @FXML private TextField txtTitle;
 
     // Instancia o conector do backend
-    private final AcademicSystemController systemController = new AcademicSystemController();
+    private final AcademicSystemController systemController =
+            ControllerFactory.getAcademicSystemController();
 
     @FXML
     public void handleSaveClass() {

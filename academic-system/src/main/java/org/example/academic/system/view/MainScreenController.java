@@ -6,6 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import org.example.academic.system.security.Session;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
 
 import java.io.IOException;
 
@@ -64,7 +69,17 @@ public class MainScreenController {
     @FXML
     public void handleLogout() {
         Session.logout();
-        // lógica para voltar para a tela de login
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/org/example/academic/system/view/LoginScreen.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) mainContainer.getScene().getWindow();
+            stage.setScene(new Scene(root, 600, 400));
+            stage.setTitle("Academic System - Login");
+            stage.centerOnScreen();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Motor de injeção de telas no centro

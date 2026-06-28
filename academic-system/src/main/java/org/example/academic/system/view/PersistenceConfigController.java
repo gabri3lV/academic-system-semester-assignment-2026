@@ -5,12 +5,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import org.example.academic.system.controller.AcademicSystemController;
+import org.example.academic.system.controller.ControllerFactory;
 
 public class PersistenceConfigController {
 
     @FXML private ToggleGroup persistenceGroup;
 
-    private final AcademicSystemController systemController = new AcademicSystemController();
+    private final AcademicSystemController systemController =
+            ControllerFactory.getAcademicSystemController();
 
     @FXML
     public void handleSaveConfig() {

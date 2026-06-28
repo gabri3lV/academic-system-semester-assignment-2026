@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import org.example.academic.system.controller.AcademicSystemController;
+import org.example.academic.system.controller.ControllerFactory;
 import org.example.academic.system.security.Session;
 
 public class ReportController {
@@ -11,7 +12,8 @@ public class ReportController {
     @FXML private Button btnPersistenceReport;
     @FXML private TextArea txtReportOutput;
 
-    private final AcademicSystemController systemController = new AcademicSystemController();
+    private final AcademicSystemController systemController =
+            ControllerFactory.getAcademicSystemController();
 
     @FXML
     public void initialize() {
