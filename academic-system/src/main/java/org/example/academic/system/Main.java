@@ -12,7 +12,9 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // US-0000: Inicializa o Singleton do AcademicSystem
         AcademicSystem system = AcademicSystem.getInstance();
+
         AuthenticationService authService = new AuthenticationService();
         Scanner scanner = new Scanner(System.in);
 
@@ -29,15 +31,14 @@ public class Main {
             System.out.println("\n===== ACADEMIC SYSTEM LOGIN =====");
             System.out.print("Username: ");
             String username = scanner.nextLine().trim();
-
             System.out.print("Password: ");
             String password = scanner.nextLine().trim();
 
             try {
                 authService.authenticate(username, password);
-                System.out.println("Welcome, " + Session.getCurrentUser().getUsername() + "!");
+                System.out.println("Welcome, "
+                        + Session.getCurrentUser().getUsername() + "!");
                 controller.start(scanner);
-                // se chegar aqui, o usuário fez logout — volta ao login
             } catch (AuthenticationException e) {
                 System.out.println("Login failed: " + e.getMessage());
             }

@@ -424,13 +424,13 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 |----|------------|-------|
 | [US-2367](#us-2367) | Handle academic domain errors with custom exceptions |✅|
 | [US-2368](#us-2368) | Handle keyboard input errors with custom exceptions | ✅ |
-| [TUS-2371](#tus-2371) | Validate academic domain objects using Jakarta Bean Validation | ❌ |
+| [TUS-2371](#tus-2371) | Validate academic domain objects using Jakarta Bean Validation | ✅ |
 
 ### Architecture and Refactoring
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [US-0000](#us-0000) | Start academic system | ❌ |
+| [US-0000](#us-0000) | Start academic system | ✅ |
 | [TUS-](#tus-) | Refactor domain model using Lombok | ✅ |
 | [TUS-2370](#tus-2370) | Refactor menu operations into AcademicSystemController | ✅ |
 | [TUS-2382](#tus-2382) | Define equality for identifiable domain objects | ✅ |
@@ -439,7 +439,7 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 | [TUS-2398](#tus-2398) | Introduce PersistenceService | ✅ |
 | [TUS-2399](#tus-2399) | Introduce ReportService | ✅ |
 | [TUS-2400](#tus-2400) | Simplify AcademicSystemController | ✅ |
-| [TUS-2414](#tus-2414) | Introduce AuthenticationController for JavaFX login | ❌ |
+| [TUS-2414](#tus-2414) | Introduce AuthenticationController for JavaFX login | ✅ |
 
 ### Docker and Deployment
 
