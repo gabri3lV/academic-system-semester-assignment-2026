@@ -1,17 +1,7 @@
-# =============================================================
-# TUS-2417 - Publish Docker image automatically
-#
-# Publica a imagem Docker no GitHub Container Registry (GHCR)
-# somente após build e testes bem-sucedidos.
-# Imagens são versionadas por tag Git ou SHA do commit.
-# =============================================================
-
 name: Docker Publish
 
 on:
   push:
-    # AC1-AC2 (TUS-2417): executa apenas em tags de release ou na branch main.
-    # A imagem só é gerada se os testes passarem (job dependency abaixo).
     tags:
       - "v*.*.*"
     branches:
@@ -19,11 +9,9 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  # AC4 (TUS-2417): nome da imagem usa o repositório GitHub como namespace
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  # ---- Job 1: build e testes (pré-requisito obrigatório) ----
   test:
     name: Build and Test
     runs-on: ubuntu-latest
@@ -38,15 +26,13 @@ jobs:
           distribution: "temurin"
           cache: maven
 
-      # AC2 (TUS-2417): a imagem só é publicada se este passo passar
       - name: Build and run tests
+        working-directory: academic-system
         run: mvn verify --batch-mode
 
-  # ---- Job 2: publicação da imagem Docker ----
   publish:
     name: Publish Docker Image
     runs-on: ubuntu-latest
-    # AC2 (TUS-2417): depende do job de testes — se falhar, este não executa
     needs: test
     permissions:
       contents: read
@@ -56,7 +42,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # AC5 (TUS-2417): autenticação no GHCR sem intervenção manual
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -64,9 +49,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # AC4 (TUS-2417): extrai metadados para versionar a imagem.
-      # Em push de tag (v1.2.3): gera tags "1.2.3" e "latest".
-      # Em push na main: gera tag com SHA curto do commit.
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v5
@@ -78,11 +60,10 @@ jobs:
             type=sha,prefix=sha-,format=short
             type=raw,value=latest,enable={{is_default_branch}}
 
-      # AC1, AC5 (TUS-2417): build e push automático da imagem Docker
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./academic-system
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

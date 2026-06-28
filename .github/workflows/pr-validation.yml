@@ -1,21 +1,12 @@
-# =============================================================
-# TUS-2418 - Configure pull request validation workflow
-#
-# Valida automaticamente todo pull request: compila o projeto
-# e executa todos os testes. Falha em erros de compilação ou
-# testes, bloqueando o merge (via branch protection - TUS-2420).
-# =============================================================
-
 name: PR Validation
 
 on:
-  # AC1 (TUS-2418): dispara ao criar ou atualizar um pull request
   pull_request:
     types: [opened, synchronize, reopened]
 
 jobs:
   validate:
-    name: Validate Pull Request
+    name: validate
     runs-on: ubuntu-latest
 
     steps:
@@ -29,12 +20,10 @@ jobs:
           distribution: "temurin"
           cache: maven
 
-      # AC2, AC3, AC4, AC5 (TUS-2418):
-      # - compila o projeto (falha em erro de compilação → AC4)
-      # - executa todos os testes automatizados (falha se qualquer teste falhar → AC5)
-      # --batch-mode suprime saída interativa no log do Actions
       - name: Build project
+        working-directory: academic-system
         run: mvn compile --batch-mode
 
       - name: Run all automated tests
+        working-directory: academic-system
         run: mvn test --batch-mode -Dnet.bytebuddy.experimental=true

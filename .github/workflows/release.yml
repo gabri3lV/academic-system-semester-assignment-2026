@@ -1,15 +1,6 @@
-# =============================================================
-# TUS-2419 - Configure release workflow
-#
-# Cria releases automáticos no GitHub quando uma tag vX.Y.Z
-# é publicada. Compila, testa, empacota e anexa o JAR ao
-# GitHub Release sem nenhuma etapa manual de packaging.
-# =============================================================
-
 name: Release
 
 on:
-  # AC1 (TUS-2419): dispara quando uma tag de release é criada
   push:
     tags:
       - "v*.*.*"
@@ -19,7 +10,7 @@ jobs:
     name: Build and Release
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # necessário para criar o GitHub Release
+      contents: write
 
     steps:
       - name: Checkout repository
@@ -32,21 +23,18 @@ jobs:
           distribution: "temurin"
           cache: maven
 
-      # AC2 (TUS-2419): compila o projeto
       - name: Build project
+        working-directory: academic-system
         run: mvn compile --batch-mode
 
-      # AC3 (TUS-2419): executa todos os testes antes de criar o release.
-      # Se algum teste falhar, o release não é gerado.
       - name: Run all automated tests
+        working-directory: academic-system
         run: mvn test --batch-mode -Dnet.bytebuddy.experimental=true
 
-      # AC4 (TUS-2419): gera o fat-JAR (artefato de release) via maven-shade-plugin
       - name: Package release artifact
+        working-directory: academic-system
         run: mvn package -DskipTests --batch-mode
 
-      # AC5 (TUS-2419): publica o JAR no GitHub Releases automaticamente.
-      # O nome do arquivo de release inclui a versão extraída da tag.
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -65,6 +53,6 @@ jobs:
             docker run -it ghcr.io/${{ github.repository }}:${{ github.ref_name }}
             ```
           files: |
-            target/academic-system-*.jar
+            academic-system/target/academic-system-*.jar
           draft: false
           prerelease: false
