@@ -1,0 +1,60 @@
+# =============================================================
+# TUS-2415 - Configure CI pipeline with GitHub Actions
+# TUS-2416 - Generate test coverage reports
+#
+# Executa em push e pull request para qualquer branch.
+# Compila o projeto, roda os testes JUnit 5 e publica o
+# relatório de cobertura JaCoCo como artefato do workflow.
+# =============================================================
+
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      # AC1 (TUS-2415): checkout do repositório
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # AC3 (TUS-2415): configura Java 23 (versão usada no projeto)
+      - name: Set up Java 23
+        uses: actions/setup-java@v4
+        with:
+          java-version: "23"
+          distribution: "temurin"
+          cache: maven
+
+      # AC4 (TUS-2415) + AC6 (TUS-2416): compila e roda testes com JaCoCo.
+      # O surefire já está configurado no pom.xml para passar o agente JaCoCo.
+      # O build falha automaticamente se compilação ou testes falharem (AC6 TUS-2415).
+      - name: Build and run tests with coverage
+        run: mvn verify --batch-mode
+
+      # AC1-AC3 (TUS-2416): publica o relatório HTML de cobertura como artefato.
+      # Inclui métricas de linha e branch conforme gerado pelo JaCoCo.
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-report
+          path: target/site/jacoco/
+          retention-days: 30
+
+      # AC5 (TUS-2416): publica também o relatório XML para integração
+      # com ferramentas externas (Codecov, SonarQube, etc.)
+      - name: Upload coverage XML
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-xml
+          path: target/site/jacoco/jacoco.xml
+          retention-days: 30

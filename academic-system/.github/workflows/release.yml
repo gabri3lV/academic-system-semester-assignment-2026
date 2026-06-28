@@ -1,0 +1,70 @@
+# =============================================================
+# TUS-2419 - Configure release workflow
+#
+# Cria releases automáticos no GitHub quando uma tag vX.Y.Z
+# é publicada. Compila, testa, empacota e anexa o JAR ao
+# GitHub Release sem nenhuma etapa manual de packaging.
+# =============================================================
+
+name: Release
+
+on:
+  # AC1 (TUS-2419): dispara quando uma tag de release é criada
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    name: Build and Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # necessário para criar o GitHub Release
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 23
+        uses: actions/setup-java@v4
+        with:
+          java-version: "23"
+          distribution: "temurin"
+          cache: maven
+
+      # AC2 (TUS-2419): compila o projeto
+      - name: Build project
+        run: mvn compile --batch-mode
+
+      # AC3 (TUS-2419): executa todos os testes antes de criar o release.
+      # Se algum teste falhar, o release não é gerado.
+      - name: Run all automated tests
+        run: mvn test --batch-mode -Dnet.bytebuddy.experimental=true
+
+      # AC4 (TUS-2419): gera o fat-JAR (artefato de release) via maven-shade-plugin
+      - name: Package release artifact
+        run: mvn package -DskipTests --batch-mode
+
+      # AC5 (TUS-2419): publica o JAR no GitHub Releases automaticamente.
+      # O nome do arquivo de release inclui a versão extraída da tag.
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Academic System ${{ github.ref_name }}"
+          body: |
+            ## Academic System ${{ github.ref_name }}
+
+            ### Download
+            Faça o download do JAR abaixo e execute com:
+            ```bash
+            java -jar academic-system-*.jar
+            ```
+            Ou use Docker:
+            ```bash
+            docker pull ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+            docker run -it ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+            ```
+          files: |
+            target/academic-system-*.jar
+          draft: false
+          prerelease: false
