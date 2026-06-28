@@ -396,34 +396,34 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 | [US-2363](#us-2363) | Register classes through keyboard input | ✅ |
 | [US-2364](#us-2364) | Manage academic system through command line menu | ✅ |
 | [US-2375](#us-2375) | Generate class assessment summary report | ✅ |
-| [US-2376](#us-2376) | Generate assessment weight report | ❌ |
+| [US-2376](#us-2376) | Generate assessment weight report | ✅ |
 
 ### Persistence Features
 
 | ID | User Story | Status |
 |----|------------|--------|
 | [TUS-2362](#tus-2362) | Persist class assessments to TXT file | ✅ |
-| [US-2372](#us-2372) | Configure persistence type as administrator | ❌ |
-| [US-2373](#us-2373) | Save academic data to XML file | ❌ |
-| [US-2374](#us-2374) | Save academic data to JSON file | ❌ |
-| [US-2377](#us-2377) | Generate persistence configuration report | ❌ |
+| [US-2372](#us-2372) | Configure persistence type as administrator | ✅ |
+| [US-2373](#us-2373) | Save academic data to XML file | ✅ |
+| [US-2374](#us-2374) | Save academic data to JSON file | ✅ |
+| [US-2377](#us-2377) | Generate persistence configuration report | ✅ |
 
 ### Security Features
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [US-2366](#us-2366) | Authenticate users and authorize actions based on roles | ❌ |
-| [US-2369](#us-2369) | Handle authentication and authorization errors with custom exceptions | ❌ |
-| [US-2378](#us-2378) | Role-based dynamic menu rendering | ❌ |
-| [US-2379](#us-2379) | Logout | ❌ |
-| [US-2380](#us-2380) | Display role-specific sequential menus | ❌ |
+| [US-2366](#us-2366) | Authenticate users and authorize actions based on roles | ✅ |
+| [US-2369](#us-2369) | Handle authentication and authorization errors with custom exceptions | ✅ |
+| [US-2378](#us-2378) | Role-based dynamic menu rendering | ✅ |
+| [US-2379](#us-2379) | Logout | ✅ |
+| [US-2380](#us-2380) | Display role-specific sequential menus | ✅ |
 
 ### Validation and Exception Handling
 
 | ID | User Story | Status |
-|----|------------|--------|
-| [US-2367](#us-2367) | Handle academic domain errors with custom exceptions | ❌ |
-| [US-2368](#us-2368) | Handle keyboard input errors with custom exceptions | ❌ |
+|----|------------|-------|
+| [US-2367](#us-2367) | Handle academic domain errors with custom exceptions |✅|
+| [US-2368](#us-2368) | Handle keyboard input errors with custom exceptions | ✅ |
 | [TUS-2371](#tus-2371) | Validate academic domain objects using Jakarta Bean Validation | ❌ |
 
 ### Architecture and Refactoring
@@ -432,13 +432,13 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 |----|------------|--------|
 | [US-0000](#us-0000) | Start academic system | ❌ |
 | [TUS-](#tus-) | Refactor domain model using Lombok | ❌ |
-| [TUS-2370](#tus-2370) | Refactor menu operations into AcademicSystemController | ❌ |
-| [TUS-2382](#tus-2382) | Define equality for identifiable domain objects | ❌ |
-| [TUS-2396](#tus-2396) | Introduce ClassService | ❌ |
-| [TUS-2397](#tus-2397) | Introduce AssessmentService | ❌ |
-| [TUS-2398](#tus-2398) | Introduce PersistenceService | ❌ |
-| [TUS-2399](#tus-2399) | Introduce ReportService | ❌ |
-| [TUS-2400](#tus-2400) | Simplify AcademicSystemController | ❌ |
+| [TUS-2370](#tus-2370) | Refactor menu operations into AcademicSystemController | ✅ |
+| [TUS-2382](#tus-2382) | Define equality for identifiable domain objects | ✅ |
+| [TUS-2396](#tus-2396) | Introduce ClassService | ✅ |
+| [TUS-2397](#tus-2397) | Introduce AssessmentService | ✅ |
+| [TUS-2398](#tus-2398) | Introduce PersistenceService | ✅ |
+| [TUS-2399](#tus-2399) | Introduce ReportService | ✅ |
+| [TUS-2400](#tus-2400) | Simplify AcademicSystemController | ✅ |
 | [TUS-2414](#tus-2414) | Introduce AuthenticationController for JavaFX login | ❌ |
 
 ### Docker and Deployment

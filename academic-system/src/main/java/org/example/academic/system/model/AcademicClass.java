@@ -23,4 +23,17 @@ public class AcademicClass {
     public void addAssessment(Assessment assessment) {
         assessments.add(assessment);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        AcademicClass that = (AcademicClass) obj;
+        return code.equals(that.code);
+    }
+
+    @Override
+    public int hashCode() {
+        return code.hashCode();
+    }
 }
