@@ -1,0 +1,3 @@
+CLASS: POO001 | POO
+  ASSESSMENT: Seminar | value=10.0 | weight=0.8
+CLASS: POO002 | POO2
