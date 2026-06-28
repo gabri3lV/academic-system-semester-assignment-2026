@@ -6,18 +6,22 @@ import org.example.academic.system.security.AuthenticationService;
 
 public class AuthenticationController {
 
-    private final AuthenticationService authService;
+    private final AuthenticationService authenticationService;
 
     public AuthenticationController() {
-        this.authService = new AuthenticationService();
+        this.authenticationService = new AuthenticationService();
     }
 
     public boolean authenticate(String username, String password) {
         try {
-            User user = authService.authenticate(username, password);
-            return user != null;
+            authenticationService.authenticate(username, password);
+            return true;
         } catch (AuthenticationException e) {
             return false;
         }
+    }
+
+    public User authenticateAndReturn(String username, String password) {
+        return authenticationService.authenticate(username, password);
     }
 }

@@ -3,6 +3,7 @@ package org.example.academic.system.service;
 import org.example.academic.system.AcademicSystem;
 import org.example.academic.system.exception.AcademicSystemException;
 import org.example.academic.system.model.AcademicClass;
+import org.example.academic.system.validation.DomainValidator;
 
 public class ClassService {
 
@@ -13,13 +14,9 @@ public class ClassService {
     }
 
     public void registerClass(String code, String title) {
-        if (code == null || code.isBlank()) {
-            throw new AcademicSystemException("Class code cannot be blank.");
-        }
-        if (title == null || title.isBlank()) {
-            throw new AcademicSystemException("Class title cannot be blank.");
-        }
-        academicSystem.addClass(new AcademicClass(code, title));
+        AcademicClass academicClass = new AcademicClass(code, title);
+        DomainValidator.validate(academicClass);
+        academicSystem.addClass(academicClass);
     }
 
     public void listClasses() {

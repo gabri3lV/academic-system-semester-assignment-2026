@@ -3,6 +3,7 @@ package org.example.academic.system.service;
 import org.example.academic.system.AcademicSystem;
 import org.example.academic.system.exception.AcademicSystemException;
 import org.example.academic.system.model.*;
+import org.example.academic.system.validation.DomainValidator;
 
 public class AssessmentService {
 
@@ -14,20 +15,29 @@ public class AssessmentService {
 
     public void registerAssessment(String classCode, String type,
                                    double value, double weight) {
-        AcademicClass academicClass = academicSystem.findClassByCode(classCode);
+        AcademicClass academicClass =
+                academicSystem.findClassByCode(classCode);
         if (academicClass == null) {
-            throw new AcademicSystemException("Class not found: " + classCode);
+            throw new AcademicSystemException(
+                    "Class not found: " + classCode);
         }
 
         Assessment assessment;
         switch (type.toLowerCase()) {
-            case "exam":               assessment = new Exam(value, weight); break;
-            case "assignment":         assessment = new Assignment(value, weight); break;
-            case "seminar":            assessment = new Seminar(value, weight); break;
-            case "practicalassignment": assessment = new PracticalAssignment(value, weight); break;
-            default: throw new AcademicSystemException("Invalid assessment type: " + type);
+            case "exam":
+                assessment = new Exam(value, weight); break;
+            case "assignment":
+                assessment = new Assignment(value, weight); break;
+            case "seminar":
+                assessment = new Seminar(value, weight); break;
+            case "practicalassignment":
+                assessment = new PracticalAssignment(value, weight); break;
+            default:
+                throw new AcademicSystemException(
+                        "Invalid assessment type: " + type);
         }
 
+        DomainValidator.validate(assessment);
         academicClass.addAssessment(assessment);
     }
 }
