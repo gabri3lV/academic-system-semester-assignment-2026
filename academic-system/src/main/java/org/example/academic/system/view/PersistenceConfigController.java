@@ -14,19 +14,14 @@ public class PersistenceConfigController {
 
     @FXML
     public void handleSaveConfig() {
-        // Pega o RadioButton que está marcado atualmente
         RadioButton selectedRadioButton = (RadioButton) persistenceGroup.getSelectedToggle();
 
         if (selectedRadioButton != null) {
-            // Extrai a String ("TXT", "XML" ou "JSON") que definimos no userData do FXML
             String selectedType = selectedRadioButton.getUserData().toString();
-
             try {
-                boolean success = systemController.configurePersistence(selectedType);
-
-                if (success) {
-                    showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Configuração de persistência alterada para " + selectedType + "!");
-                }
+                systemController.configurePersistence(selectedType);
+                showAlert(Alert.AlertType.INFORMATION, "Sucesso",
+                        "Configuração alterada para " + selectedType + "!");
             } catch (Exception e) {
                 showAlert(Alert.AlertType.ERROR, "Erro", e.getMessage());
             }

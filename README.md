@@ -451,19 +451,19 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [TUS-2383](#tus-2383) | Configure automated testing infrastructure | ❌ |
-| [TUS-2384](#tus-2384) | Test identifiable domain object equality | ❌ |
-| [TUS-2385](#tus-2385) | Test academic domain validation | ❌ |
-| [US-2386](#us-2386) | Test authentication behavior | ❌ |
-| [US-2387](#us-2387) | Test authorization behavior | ❌ |
-| [US-2388](#us-2388) | Test report generation | ❌ |
-| [US-2389](#us-2389) | Test persistence repositories | ❌ |
-| [TUS-2395](#tus-2395) | Verify logging infrastructure behavior | ❌ |
-| [TUS-2401](#tus-2401) | Test ClassService behavior | ❌ |
-| [TUS-2402](#tus-2402) | Test AssessmentService behavior | ❌ |
-| [TUS-2403](#tus-2403) | Test PersistenceService behavior | ❌ |
-| [TUS-2404](#tus-2404) | Test ReportService behavior | ❌ |
-| [TUS-2405](#tus-2405) | Test AcademicSystemController delegation behavior | ❌ |
+| [TUS-2383](#tus-2383) | Configure automated testing infrastructure | ✅ |
+| [TUS-2384](#tus-2384) | Test identifiable domain object equality | ✅ |
+| [TUS-2385](#tus-2385) | Test academic domain validation | ✅ |
+| [US-2386](#us-2386) | Test authentication behavior | ✅ |
+| [US-2387](#us-2387) | Test authorization behavior | ✅ |
+| [US-2388](#us-2388) | Test report generation | ✅ |
+| [US-2389](#us-2389) | Test persistence repositories | ✅ |
+| [TUS-2395](#tus-2395) | Verify logging infrastructure behavior | ✅ |
+| [TUS-2401](#tus-2401) | Test ClassService behavior | ✅ |
+| [TUS-2402](#tus-2402) | Test AssessmentService behavior | ✅ |
+| [TUS-2403](#tus-2403) | Test PersistenceService behavior | ✅ |
+| [TUS-2404](#tus-2404) | Test ReportService behavior | ✅ |
+| [TUS-2405](#tus-2405) | Test AcademicSystemController delegation behavior | ✅ |
 
 ### Logging and Auditing
 

@@ -89,8 +89,24 @@ public class AcademicSystemController {
 
     private boolean handleAdminOption(String option, Scanner scanner) {
         switch (option) {
-            case "1": registerClass(scanner); break;
-            case "2": registerAssessment(scanner); break;
+            case "1":
+                System.out.print("Class code: ");
+                String code = scanner.nextLine().trim();
+                System.out.print("Class title: ");
+                String title = scanner.nextLine().trim();
+                registerClass(code, title); // chama o método público
+                break;
+            case "2":
+                System.out.print("Class code: ");
+                String classCode = scanner.nextLine().trim();
+                System.out.print("Assessment type (exam/assignment/seminar/practicalassignment): ");
+                String type = scanner.nextLine().trim();
+                System.out.print("Value: ");
+                double value = Double.parseDouble(scanner.nextLine().trim());
+                System.out.print("Weight: ");
+                double weight = Double.parseDouble(scanner.nextLine().trim());
+                registerAssessment(classCode, type, value, weight); // chama o método público
+                break;
             case "3": classService.listClasses(); break;
             case "4": reportService.generateClassSummaryReport(); break;
             case "5": reportService.generateAssessmentWeightReport(); break;
@@ -112,7 +128,17 @@ public class AcademicSystemController {
 
     private boolean handleProfessorOption(String option, Scanner scanner) {
         switch (option) {
-            case "1": registerAssessment(scanner); break;
+            case "1":
+                System.out.print("Class code: ");
+                String classCode = scanner.nextLine().trim();
+                System.out.print("Assessment type (exam/assignment/seminar/practicalassignment): ");
+                String type = scanner.nextLine().trim();
+                System.out.print("Value: ");
+                double value = Double.parseDouble(scanner.nextLine().trim());
+                System.out.print("Weight: ");
+                double weight = Double.parseDouble(scanner.nextLine().trim());
+                registerAssessment(classCode, type, value, weight); // chama o método público
+                break;
             case "2": classService.listClasses(); break;
             case "3": reportService.generateClassSummaryReport(); break;
             case "4": reportService.generateAssessmentWeightReport(); break;
@@ -131,19 +157,29 @@ public class AcademicSystemController {
 
     // ---- Operations ----
 
-    private void registerClass(Scanner scanner) {
+    public void registerClass(String code, String title) {
         if (!Session.isAdmin()) {
             throw new AuthorizationException("Only administrators can register classes.");
         }
-        System.out.print("Class code: ");
-        String code = scanner.nextLine().trim();
-        System.out.print("Class title: ");
-        String title = scanner.nextLine().trim();
         classService.registerClass(code, title);
         System.out.println("Class registered successfully!");
     }
 
-    private void registerAssessment(Scanner scanner) {
+    public void registerClass(Scanner scanner) {
+        System.out.print("Class code: ");
+        String code = scanner.nextLine().trim();
+        System.out.print("Class title: ");
+        String title = scanner.nextLine().trim();
+        registerClass(code, title); // delega ao método testável
+    }
+
+    public void registerAssessment(String classCode, String type,
+                                   double value, double weight) {
+        assessmentService.registerAssessment(classCode, type, value, weight);
+        System.out.println("Assessment registered successfully!");
+    }
+
+    public void registerAssessment(Scanner scanner) {
         System.out.print("Class code: ");
         String classCode = scanner.nextLine().trim();
         System.out.print("Assessment type (exam/assignment/seminar/practicalassignment): ");
@@ -152,55 +188,32 @@ public class AcademicSystemController {
         double value = Double.parseDouble(scanner.nextLine().trim());
         System.out.print("Weight: ");
         double weight = Double.parseDouble(scanner.nextLine().trim());
-        assessmentService.registerAssessment(classCode, type, value, weight);
-        System.out.println("Assessment registered successfully!");
+        registerAssessment(classCode, type, value, weight); // delega
     }
 
-    private void configurePersistence(Scanner scanner) {
+    public void configurePersistence(String type) {
         if (!Session.isAdmin()) {
             throw new AuthorizationException("Only administrators can configure persistence.");
         }
+        switch (type.toUpperCase()) {
+            case "TXT":  persistenceService.setPersistenceType(PersistenceType.TXT); break;
+            case "XML":  persistenceService.setPersistenceType(PersistenceType.XML); break;
+            case "JSON": persistenceService.setPersistenceType(PersistenceType.JSON); break;
+            default: System.out.println("Invalid persistence type.");
+        }
+    }
+
+    public void configurePersistence(Scanner scanner) {
         System.out.println("1 - TXT");
         System.out.println("2 - XML");
         System.out.println("3 - JSON");
         System.out.print("Choose: ");
         switch (scanner.nextLine().trim()) {
-            case "1": persistenceService.setPersistenceType(PersistenceType.TXT); break;
-            case "2": persistenceService.setPersistenceType(PersistenceType.XML); break;
-            case "3": persistenceService.setPersistenceType(PersistenceType.JSON); break;
+            case "1": configurePersistence("TXT"); break;
+            case "2": configurePersistence("XML"); break;
+            case "3": configurePersistence("JSON"); break;
             default: System.out.println("Invalid persistence type.");
         }
-    }
-
-    // Métodos para a camada JavaFX (retornam dados em vez de imprimir)
-
-    public boolean registerClass(String code, String title) {
-        try {
-            classService.registerClass(code, title);
-            return true;
-        } catch (AcademicSystemException e) {
-            throw e; // repassa para o controller JavaFX tratar
-        }
-    }
-
-    public boolean registerAssessment(String classCode, String type,
-                                      double value, double weight) {
-        try {
-            assessmentService.registerAssessment(classCode, type, value, weight);
-            return true;
-        } catch (AcademicSystemException e) {
-            throw e;
-        }
-    }
-
-    public boolean configurePersistence(String type) {
-        switch (type.toUpperCase()) {
-            case "TXT":  persistenceService.setPersistenceType(PersistenceType.TXT); break;
-            case "XML":  persistenceService.setPersistenceType(PersistenceType.XML); break;
-            case "JSON": persistenceService.setPersistenceType(PersistenceType.JSON); break;
-            default: return false;
-        }
-        return true;
     }
 
     public String generateClassAssessmentSummaryReport() {
@@ -211,7 +224,8 @@ public class AcademicSystemController {
             return sb.toString();
         }
         for (var c : academicSystem().getClasses()) {
-            sb.append("\nClass: ").append(c.getCode()).append(" | ").append(c.getTitle()).append("\n");
+            sb.append("\nClass: ").append(c.getCode())
+                    .append(" | ").append(c.getTitle()).append("\n");
             if (c.getAssessments().isEmpty()) {
                 sb.append("  No assessments registered.\n");
             } else {

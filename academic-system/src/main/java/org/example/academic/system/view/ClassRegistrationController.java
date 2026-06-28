@@ -19,15 +19,10 @@ public class ClassRegistrationController {
         String title = txtTitle.getText();
 
         try {
-            // A interface é "burra", ela apenas passa os dados para o backend trabalhar
-            boolean success = systemController.registerClass(courseCode, title);
-
-            if (success) {
-                showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Turma registrada com sucesso!");
-                clearFields();
-            }
+            systemController.registerClass(courseCode, title);
+            showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Turma registrada com sucesso!");
+            clearFields();
         } catch (Exception e) {
-            // Captura qualquer erro de validação do backend (ex: campos vazios, código duplicado)
             showAlert(Alert.AlertType.ERROR, "Erro de Validação", e.getMessage());
         }
     }

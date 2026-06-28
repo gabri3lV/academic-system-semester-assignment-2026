@@ -1,0 +1,13 @@
+<academicData>
+  <class>
+    <code>POO01</code>
+    <title>Orientacao a Objetos</title>
+    <assessments>
+      <assessment>
+        <type>Exam</type>
+        <value>10.0</value>
+        <weight>1.0</weight>
+      </assessment>
+    </assessments>
+  </class>
+</academicData>

@@ -15,12 +15,10 @@ public class ReportController {
 
     @FXML
     public void initialize() {
-        // Regra de Autorização (RBAC): Professor não vê relatório de persistência
-        String role = Session.getInstance().getCurrentUserRole();
-
-        if ("PROFESSOR".equals(role)) {
+        if (Session.getCurrentRole() != null
+                && Session.getCurrentRole().name().equals("PROFESSOR")) {
             btnPersistenceReport.setVisible(false);
-            btnPersistenceReport.setManaged(false); // Remove o espaço em branco
+            btnPersistenceReport.setManaged(false);
         }
     }
 

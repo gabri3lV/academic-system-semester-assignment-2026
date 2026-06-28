@@ -30,22 +30,17 @@ public class AssessmentRegistrationController {
         String type = cbAssessmentType.getValue();
 
         try {
-            // Tenta converter os textos em números (Double)
             double value = Double.parseDouble(txtValue.getText().replace(",", "."));
             double weight = Double.parseDouble(txtWeight.getText().replace(",", "."));
 
-            // Envia para o backend processar
-            boolean success = systemController.registerAssessment(courseCode, type, value, weight);
+            systemController.registerAssessment(courseCode, type, value, weight);
 
-            if (success) {
-                showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Avaliação registrada com sucesso!");
-                clearFields();
-            }
+            showAlert(Alert.AlertType.INFORMATION, "Sucesso", "Avaliação registrada com sucesso!");
+            clearFields();
+
         } catch (NumberFormatException e) {
-            // Captura o erro se o usuário digitar letras no lugar de números
-            showAlert(Alert.AlertType.ERROR, "Erro de Entrada", "Por favor, insira valores numéricos válidos para Valor e Peso.");
+            showAlert(Alert.AlertType.ERROR, "Erro de Entrada", "Por favor, insira valores numéricos válidos.");
         } catch (Exception e) {
-            // Captura as validações de regra de negócio do backend
             showAlert(Alert.AlertType.ERROR, "Erro de Validação", e.getMessage());
         }
     }

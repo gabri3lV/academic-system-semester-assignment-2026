@@ -22,13 +22,10 @@ public class MainScreenController {
 
     @FXML
     public void initialize() {
-        // Ao abrir a tela, verifica o cargo e esconde botões se necessário (RBAC)
-        String role = Session.getInstance().getCurrentUserRole();
-
-        if ("PROFESSOR".equals(role)) {
+        if (Session.getCurrentRole() != null
+                && "PROFESSOR".equals(Session.getCurrentRole().name())) {
             btnClassRegistration.setVisible(false);
-            btnClassRegistration.setManaged(false); // Remove o espaço em branco do botão
-
+            btnClassRegistration.setManaged(false);
             btnPersistenceConfig.setVisible(false);
             btnPersistenceConfig.setManaged(false);
         }
@@ -66,9 +63,8 @@ public class MainScreenController {
 
     @FXML
     public void handleLogout() {
-        System.out.println("Limpando sessão e voltando pro Login...");
-        Session.getInstance().clear();
-        // Lógica para voltar pra tela de login aqui
+        Session.logout();
+        // lógica para voltar para a tela de login
     }
 
     // Motor de injeção de telas no centro

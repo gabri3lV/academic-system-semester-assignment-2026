@@ -37,4 +37,8 @@ public class AcademicSystem {
         }
         return null;
     }
+
+    public static void resetInstance() {
+        instance = null;
+    }
 }

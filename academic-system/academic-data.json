@@ -1,0 +1,15 @@
+{
+  "classes": [
+    {
+      "code": "POO01",
+      "title": "Orientacao a Objetos",
+      "assessments": [
+        {
+          "type": "Exam",
+          "value": 10.0,
+          "weight": 1.0
+        }
+      ]
+    }
+  ]
+}

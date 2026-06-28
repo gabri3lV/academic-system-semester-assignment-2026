@@ -1,0 +1,2 @@
+CLASS: POO01 | Orientacao a Objetos
+  ASSESSMENT: Exam | value=10.0 | weight=1.0
