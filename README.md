@@ -445,7 +445,7 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [TUS-2381](#tus-2381) | Deliver academic system with Docker | ❌ |
+| [TUS-2381](#tus-2381) | Deliver academic system with Docker | ✅ |
 
 ### Testing Infrastructure and Automated Tests
 
@@ -492,12 +492,12 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [TUS-2415](#tus-2415) | Configure CI pipeline with GitHub Actions | ❌ |
-| [TUS-2416](#tus-2416) | Generate test coverage reports | ❌ |
-| [TUS-2417](#tus-2417) | Publish Docker image automatically | ❌ |
-| [TUS-2418](#tus-2418) | Configure pull request validation workflow | ❌ |
-| [TUS-2419](#tus-2419) | Configure release workflow | ❌ |
-| [TUS-2420](#tus-2420) | Configure branch protection for pull requests | ❌ |
+| [TUS-2415](#tus-2415) | Configure CI pipeline with GitHub Actions | ✅ |
+| [TUS-2416](#tus-2416) | Generate test coverage reports | ✅ |
+| [TUS-2417](#tus-2417) | Publish Docker image automatically | ✅ |
+| [TUS-2418](#tus-2418) | Configure pull request validation workflow | ✅ |
+| [TUS-2419](#tus-2419) | Configure release workflow | ✅ |
+| [TUS-2420](#tus-2420) | Configure branch protection for pull requests | ✅ |
 
 [↑ Back to top](#top)
 
