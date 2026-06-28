@@ -469,11 +469,11 @@ Changes must be submitted through pull requests. Direct pushes to `main` are not
 
 | ID | User Story | Status |
 |----|------------|--------|
-| [TUS-2390](#tus-2390) | Configure application logging infrastructure | ❌ |
-| [TUS-2391](#tus-2391) | Log authentication and logout events | ❌ |
-| [TUS-2392](#tus-2392) | Log authorization failures | ❌ |
-| [TUS-2393](#tus-2393) | Log persistence operations | ❌ |
-| [TUS-2394](#tus-2394) | Log report generation | ❌ |
+| [TUS-2390](#tus-2390) | Configure application logging infrastructure | ✅ |
+| [TUS-2391](#tus-2391) | Log authentication and logout events | ✅ |
+| [TUS-2392](#tus-2392) | Log authorization failures | ✅ |
+| [TUS-2393](#tus-2393) | Log persistence operations | ✅ |
+| [TUS-2394](#tus-2394) | Log report generation | ✅ |
 
 ### Graphical User Interface (JavaFX)
 

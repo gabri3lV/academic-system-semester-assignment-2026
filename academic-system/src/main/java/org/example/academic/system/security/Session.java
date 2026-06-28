@@ -2,8 +2,13 @@ package org.example.academic.system.security;
 
 import org.example.academic.system.model.Role;
 import org.example.academic.system.model.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Session {
+
+    private static final Logger logger =
+            LoggerFactory.getLogger(Session.class);
 
     private static User currentUser;
 
@@ -12,6 +17,10 @@ public class Session {
     }
 
     public static void logout() {
+        if (currentUser != null) {
+            logger.info("Logout: username={}, role={}",
+                    currentUser.getUsername(), currentUser.getRole());
+        }
         currentUser = null;
     }
 

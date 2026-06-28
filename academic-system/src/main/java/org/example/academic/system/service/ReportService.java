@@ -4,8 +4,14 @@ import org.example.academic.system.AcademicSystem;
 import org.example.academic.system.model.AcademicClass;
 import org.example.academic.system.model.Assessment;
 import org.example.academic.system.repository.PersistenceConfiguration;
+import org.example.academic.system.security.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ReportService {
+
+    private static final Logger logger =
+            LoggerFactory.getLogger(ReportService.class);
 
     private AcademicSystem academicSystem;
 
@@ -14,6 +20,8 @@ public class ReportService {
     }
 
     public void generateClassSummaryReport() {
+        logger.info("Generating class summary report: role={}",
+                Session.getCurrentRole());
         System.out.println("\n===== CLASS ASSESSMENT SUMMARY REPORT =====");
         if (academicSystem.getClasses().isEmpty()) {
             System.out.println("No classes registered.");
@@ -34,6 +42,8 @@ public class ReportService {
     }
 
     public void generateAssessmentWeightReport() {
+        logger.info("Generating assessment weight report: role={}",
+                Session.getCurrentRole());
         System.out.println("\n===== ASSESSMENT WEIGHT REPORT =====");
         if (academicSystem.getClasses().isEmpty()) {
             System.out.println("No classes registered.");
@@ -49,6 +59,8 @@ public class ReportService {
     }
 
     public void generatePersistenceConfigurationReport() {
+        logger.info("Generating persistence configuration report: role={}",
+                Session.getCurrentRole());
         System.out.println("\n===== PERSISTENCE CONFIGURATION REPORT =====");
         System.out.println("Current persistence type: "
                 + PersistenceConfiguration.getCurrentType());

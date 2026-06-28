@@ -7,10 +7,15 @@ import org.example.academic.system.repository.PersistenceConfiguration;
 import org.example.academic.system.repository.PersistenceType;
 import org.example.academic.system.security.Session;
 import org.example.academic.system.service.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
 public class AcademicSystemController {
+
+    private static final Logger logger =
+            LoggerFactory.getLogger(AcademicSystemController.class);
 
     private ClassService classService;
     private AssessmentService assessmentService;
@@ -159,6 +164,9 @@ public class AcademicSystemController {
 
     public void registerClass(String code, String title) {
         if (!Session.isAdmin()) {
+            logger.warn("Authorization failure: user={}, role={}, operation=registerClass",
+                    Session.getCurrentUser() != null ? Session.getCurrentUser().getUsername() : "unknown",
+                    Session.getCurrentRole());
             throw new AuthorizationException("Only administrators can register classes.");
         }
         classService.registerClass(code, title);
@@ -193,6 +201,9 @@ public class AcademicSystemController {
 
     public void configurePersistence(String type) {
         if (!Session.isAdmin()) {
+            logger.warn("Authorization failure: user={}, role={}, operation=configurePersistence",
+                    Session.getCurrentUser() != null ? Session.getCurrentUser().getUsername() : "unknown",
+                    Session.getCurrentRole());
             throw new AuthorizationException("Only administrators can configure persistence.");
         }
         switch (type.toUpperCase()) {
