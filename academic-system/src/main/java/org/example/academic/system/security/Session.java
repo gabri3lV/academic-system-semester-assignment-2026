@@ -30,4 +30,21 @@ public class Session {
     public static boolean isAdmin() {
         return currentUser != null && currentUser.getRole() == Role.ADMIN;
     }
+
+    // Compatibilidade com código JavaFX que usa Session.getInstance()
+    public static Session getInstance() {
+        return SessionHolder.INSTANCE;
+    }
+
+    private static class SessionHolder {
+        private static final Session INSTANCE = new Session();
+    }
+
+    public String getCurrentUserRole() {
+        return currentUser != null ? currentUser.getRole().name() : null;
+    }
+
+    public void clear() {
+        logout();
+    }
 }

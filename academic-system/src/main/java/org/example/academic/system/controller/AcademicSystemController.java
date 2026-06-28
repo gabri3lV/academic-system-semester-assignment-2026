@@ -1,7 +1,9 @@
 package org.example.academic.system.controller;
 
+import org.example.academic.system.AcademicSystem;
 import org.example.academic.system.exception.AcademicSystemException;
 import org.example.academic.system.exception.AuthorizationException;
+import org.example.academic.system.repository.PersistenceConfiguration;
 import org.example.academic.system.repository.PersistenceType;
 import org.example.academic.system.security.Session;
 import org.example.academic.system.service.*;
@@ -23,6 +25,14 @@ public class AcademicSystemController {
         this.assessmentService = assessmentService;
         this.persistenceService = persistenceService;
         this.reportService = reportService;
+    }
+
+    public AcademicSystemController() {
+        AcademicSystem system = AcademicSystem.getInstance();
+        this.classService = new ClassService(system);
+        this.assessmentService = new AssessmentService(system);
+        this.persistenceService = new PersistenceService(system);
+        this.reportService = new ReportService(system);
     }
 
     public void start(Scanner scanner) {
@@ -160,5 +170,82 @@ public class AcademicSystemController {
             case "3": persistenceService.setPersistenceType(PersistenceType.JSON); break;
             default: System.out.println("Invalid persistence type.");
         }
+    }
+
+    // Métodos para a camada JavaFX (retornam dados em vez de imprimir)
+
+    public boolean registerClass(String code, String title) {
+        try {
+            classService.registerClass(code, title);
+            return true;
+        } catch (AcademicSystemException e) {
+            throw e; // repassa para o controller JavaFX tratar
+        }
+    }
+
+    public boolean registerAssessment(String classCode, String type,
+                                      double value, double weight) {
+        try {
+            assessmentService.registerAssessment(classCode, type, value, weight);
+            return true;
+        } catch (AcademicSystemException e) {
+            throw e;
+        }
+    }
+
+    public boolean configurePersistence(String type) {
+        switch (type.toUpperCase()) {
+            case "TXT":  persistenceService.setPersistenceType(PersistenceType.TXT); break;
+            case "XML":  persistenceService.setPersistenceType(PersistenceType.XML); break;
+            case "JSON": persistenceService.setPersistenceType(PersistenceType.JSON); break;
+            default: return false;
+        }
+        return true;
+    }
+
+    public String generateClassAssessmentSummaryReport() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("===== CLASS ASSESSMENT SUMMARY REPORT =====\n");
+        if (academicSystem().getClasses().isEmpty()) {
+            sb.append("No classes registered.");
+            return sb.toString();
+        }
+        for (var c : academicSystem().getClasses()) {
+            sb.append("\nClass: ").append(c.getCode()).append(" | ").append(c.getTitle()).append("\n");
+            if (c.getAssessments().isEmpty()) {
+                sb.append("  No assessments registered.\n");
+            } else {
+                for (var a : c.getAssessments()) {
+                    sb.append("  - ").append(a.getClass().getSimpleName())
+                            .append(" | value=").append(a.getValue())
+                            .append(" | weight=").append(a.getWeight()).append("\n");
+                }
+            }
+        }
+        return sb.toString();
+    }
+
+    public String generateAssessmentWeightReport() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("===== ASSESSMENT WEIGHT REPORT =====\n");
+        for (var c : academicSystem().getClasses()) {
+            double total = c.getAssessments().stream()
+                    .mapToDouble(a -> a.getWeight()).sum();
+            String status = Math.abs(total - 1.0) < 0.001 ? "VALID ✓" : "INVALID ✗";
+            sb.append("Class: ").append(c.getCode()).append(" | ")
+                    .append(c.getTitle()).append(" | Total weight: ")
+                    .append(total).append(" | ").append(status).append("\n");
+        }
+        return sb.toString();
+    }
+
+    public String generatePersistenceConfigurationReport() {
+        return "===== PERSISTENCE CONFIGURATION REPORT =====\n"
+                + "Current persistence type: "
+                + PersistenceConfiguration.getCurrentType();
+    }
+
+    private AcademicSystem academicSystem() {
+        return AcademicSystem.getInstance();
     }
 }

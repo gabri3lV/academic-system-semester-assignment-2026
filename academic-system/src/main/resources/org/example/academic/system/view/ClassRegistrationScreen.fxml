@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.academic.system.view.ClassRegistrationController">
+<padding>
+    <Insets bottom="30.0" left="50.0" right="50.0" top="30.0" />
+</padding>
+
+<Label text="Registrar Nova Turma" textFill="#2c3e50">
+    <font>
+        <Font name="System Bold" size="24.0" />
+    </font>
+    <VBox.margin>
+        <Insets bottom="20.0" />
+    </VBox.margin>
+</Label>
+
+<VBox spacing="5.0" maxWidth="400.0">
+    <Label text="Código da Disciplina (Ex: CC001):" />
+    <TextField fx:id="txtCourseCode" promptText="Digite o código..." />
+</VBox>
+
+<VBox spacing="5.0" maxWidth="400.0">
+    <Label text="Título da Disciplina:" />
+    <TextField fx:id="txtTitle" promptText="Digite o título..." />
+</VBox>
+
+<Button mnemonicParsing="false" onAction="#handleSaveClass" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;" text="Salvar Turma">
+    <VBox.margin>
+        <Insets top="20.0" />
+    </VBox.margin>
+</Button>
+</VBox>

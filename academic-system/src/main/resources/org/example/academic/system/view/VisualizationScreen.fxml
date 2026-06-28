@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="500.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.academic.system.view.VisualizationController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label text="Visualização de Turmas e Avaliações" textFill="#2c3e50">
+        <font>
+            <Font name="System Bold" size="20.0" />
+        </font>
+    </Label>
+
+    <Label text="1. Turmas Cadastradas (Selecione uma para ver os detalhes):" textFill="#7f8c8d" />
+
+    <TableView fx:id="tableClasses" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colClassCode" prefWidth="150.0" text="Código" />
+            <TableColumn fx:id="colClassTitle" prefWidth="400.0" text="Título da Disciplina" />
+        </columns>
+    </TableView>
+
+    <Label text="2. Avaliações da Turma Selecionada:" textFill="#7f8c8d">
+        <VBox.margin>
+            <Insets top="10.0" />
+        </VBox.margin>
+    </Label>
+
+    <TableView fx:id="tableAssessments" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colAssessmentType" prefWidth="200.0" text="Tipo de Avaliação" />
+            <TableColumn fx:id="colAssessmentValue" prefWidth="150.0" text="Valor (Nota)" />
+            <TableColumn fx:id="colAssessmentWeight" prefWidth="150.0" text="Peso" />
+        </columns>
+    </TableView>
+</VBox>
